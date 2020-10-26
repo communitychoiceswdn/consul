@@ -25,8 +25,8 @@ gem "foundation-rails", "~> 6.6.2.0"
 gem "foundation_rails_helper", "~> 3.0.0"
 gem "globalize", "~> 5.3.0"
 gem "globalize-accessors", "~> 0.2.1"
-gem "graphiql-rails", "~> 1.4.1"
-gem "graphql", "~> 1.7.8"
+gem "graphiql-rails", "~> 1.7.0"
+gem "graphql", "~> 1.11.5"
 gem "groupdate", "~> 5.2.1"
 gem "initialjs-rails", "~> 0.2.0.9"
 gem "invisible_captcha", "~> 1.1.0"
@@ -43,12 +43,12 @@ gem "omniauth-twitter", "~> 1.4.0"
 gem 'omniauth-saml', "~> 1.10.2"
 gem "paperclip", "~> 6.1.0"
 gem "paranoia", "~> 2.4.2"
-gem "pg", "~> 0.21.0"
+gem "pg", "~> 1.0.0"
 gem "pg_search", "~> 2.3.0"
 gem "puma", "~> 4.3.6"
 gem "recipient_interceptor", "~> 0.2.0"
 gem "redcarpet", "~> 3.5.0"
-gem "responders", "~> 2.4.0"
+gem "responders", "~> 3.0.1"
 gem "rinku", "~> 2.0.6", require: "rails_rinku"
 gem "rollbar", "~> 3.0.0"
 gem "sassc-rails", "~> 2.1.2"
@@ -103,7 +103,7 @@ group :development do
   gem "github_changelog_generator", "~> 1.15.2"
   gem "mdl", "~> 0.11.0", require: false
   gem "rubocop", "~> 0.83.0", require: false
-  gem "rubocop-performance", "~> 1.6.1", require: false
+  gem "rubocop-performance", "~> 1.7.1", require: false
   gem "rubocop-rails", "~> 2.3.2", require: false
   gem "rubocop-rspec", "~> 1.35.0", require: false
   gem "rvm1-capistrano3", "~> 1.4.0", require: false
