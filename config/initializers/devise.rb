@@ -251,7 +251,10 @@ Devise.setup do |config|
                   client_options: { site: Rails.application.secrets.wordpress_oauth2_site }
   config.omniauth :saml,
                   idp_cert_fingerprint: Rails.application.secrets.saml_idp_cert_fingerprint,
-                  idp_sso_target_url: Rails.application.secrets.saml_idp_sso_target_url
+                  idp_sso_target_url: Rails.application.secrets.saml_idp_sso_target_url,
+                  certificate: Rails.application.secrets.saml_certificate,
+                  private_key: Rails.application.secrets.saml_private_key,
+                  name_identifier_format: Rails.application.secrets.saml_name_identifier_format
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
