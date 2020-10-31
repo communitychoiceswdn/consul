@@ -254,7 +254,12 @@ Devise.setup do |config|
                   idp_sso_target_url: Rails.application.secrets.saml_idp_sso_target_url,
                   certificate: Rails.application.secrets.saml_certificate,
                   private_key: Rails.application.secrets.saml_private_key,
-                  name_identifier_format: Rails.application.secrets.saml_name_identifier_format
+                  request_attributes: [
+                    { :name => 'email', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic' },
+                    { :name => 'name', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic' },
+                    { :name => 'first_name', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic' },
+                    { :name => 'last_name', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic' }
+                  ]
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
