@@ -254,7 +254,13 @@ Devise.setup do |config|
                   idp_sso_target_url: Rails.application.secrets.saml_idp_sso_target_url,
                   certificate: Rails.application.secrets.saml_certificate,
                   private_key: Rails.application.secrets.saml_private_key,
-                  request_attributes: Rails.application.secrets.saml_request_attributes,
+                  request_attributes: [
+                    { :name => 'urn:oid:0.9.2342.19200300.100.1.22', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Email address' },
+                    { :name => 'urn:oid:0.9.2342.19200300.100.1.1', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Full name' },
+                    { :name => 'urn:oid:0.9.2342.19200300.100.1.2', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Given name' },
+                    { :name => 'urn:oid:0.9.2342.19200300.100.1.4', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Family name' },
+                    { :name => 'urn:oid:0.9.2342.19200300.100.1.17', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Primary CAG Code' }
+                  ],
                   issuer: Rails.application.secrets.saml_issuer
 
   # ==> Warden configuration
