@@ -267,7 +267,7 @@ Devise.setup do |config|
                     last_name: ['sn','urn:oid:0.9.2342.19200300.100.1.4'],
                     nickname: ['Full name','urn:oid:0.9.2342.19200300.100.1.1']
                   }
-                  issuer: Rails.application.secrets.saml_issuer
+                  issuer: "https://test.communitychoices.scot"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
