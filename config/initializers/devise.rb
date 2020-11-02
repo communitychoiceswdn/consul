@@ -261,13 +261,8 @@ Devise.setup do |config|
                     { :name => 'urn:oid:0.9.2342.19200300.100.1.4', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Surname' },
                     { :name => 'urn:oid:0.9.2342.19200300.100.1.17', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Primary CAG Code' }
                   ],
-                  attribute_statements: {
-                    email: ['mail','email','urn:oid:0.9.2342.19200300.100.1.22'],
-                    first_name: ['givenName','urn:oid:0.9.2342.19200300.100.1.2'],
-                    last_name: ['sn','urn:oid:0.9.2342.19200300.100.1.4'],
-                    nickname: ['Full name','urn:oid:0.9.2342.19200300.100.1.1']
-                  }
-                  issuer: "https://test.communitychoices.scot"
+                  attribute_statements: Rails.application.secrets.attribute_statements
+                  issuer: Rails.application.secrets.saml_issuer
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
