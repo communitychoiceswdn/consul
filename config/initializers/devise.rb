@@ -255,12 +255,18 @@ Devise.setup do |config|
                   certificate: Rails.application.secrets.saml_certificate,
                   private_key: Rails.application.secrets.saml_private_key,
                   request_attributes: [
-                    { :name => 'urn:oid:0.9.2342.19200300.100.1.22', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Email address' },
-                    { :name => 'urn:oid:0.9.2342.19200300.100.1.1', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Full name' },
-                    { :name => 'urn:oid:0.9.2342.19200300.100.1.2', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Given name' },
-                    { :name => 'urn:oid:0.9.2342.19200300.100.1.4', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Family name' },
+                    { :name => 'urn:oid:0.9.2342.19200300.100.1.22', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Email Address' },
+                    { :name => 'urn:oid:0.9.2342.19200300.100.1.1', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Username' },
+                    { :name => 'urn:oid:0.9.2342.19200300.100.1.2', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'First name' },
+                    { :name => 'urn:oid:0.9.2342.19200300.100.1.4', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Surname' },
                     { :name => 'urn:oid:0.9.2342.19200300.100.1.17', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Primary CAG Code' }
                   ],
+                  attribute_statements: {
+                    email: ['mail','email','urn:oid:0.9.2342.19200300.100.1.22'],
+                    first_name: ['givenName','urn:oid:0.9.2342.19200300.100.1.2'],
+                    last_name: ['sn','urn:oid:0.9.2342.19200300.100.1.4'],
+                    nickname: ['Full name','urn:oid:0.9.2342.19200300.100.1.1']
+                  }
                   issuer: Rails.application.secrets.saml_issuer
 
   # ==> Warden configuration
