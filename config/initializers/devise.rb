@@ -261,7 +261,6 @@ Devise.setup do |config|
                     { :name => 'urn:oid:0.9.2342.19200300.100.1.4', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Surname' },
                     { :name => 'urn:oid:0.9.2342.19200300.100.1.17', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Primary CAG Code' }
                   ],
-                  attribute_statements: Rails.application.secrets.attribute_statements
                   issuer: Rails.application.secrets.saml_issuer
 
   # ==> Warden configuration
