@@ -247,7 +247,7 @@ Devise.setup do |config|
   # Load IdP metadata directly from the IdP in dev / prod ENV
   idp_metadata = idp_metadata_parser.parse_remote_to_hash(
     Rails.application.secrets.saml_idp_metadata,
-    true, # validate cert
+    # true, # validate cert
     entity_id: Rails.application.secrets.saml_entity_data
   )
 
@@ -265,6 +265,7 @@ Devise.setup do |config|
   config.omniauth :saml,
                   idp_cert_fingerprint: Rails.application.secrets.saml_idp_cert_fingerprint,
                   certificate: Rails.application.secrets.saml_certificate,
+                  idp_sso_target_url: idp_metadata.idp_sso_target_url,
                   private_key: Rails.application.secrets.saml_private_key,
                   request_attributes: [
                     { :name => 'urn:oid:0.9.2342.19200300.100.1.22', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Email Address' },
