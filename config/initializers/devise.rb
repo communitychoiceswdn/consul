@@ -242,19 +242,17 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  #
-  require 'omniauth'
   idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
-  idp_metadata = idp_metadata_parser.parse_remote_to_hash(Rails.application.secrets.saml_idp_metadata)
+
+  # Load IdP metadata directly from the IdP in dev / prod ENV
+  idp_metadata = idp_metadata_parser.parse_remote_to_hash(
+    Rails.application.secrets.saml_idp_metadata,
+    true, # validate cert
+    entity_id: Rails.application.secrets.saml_entity_data
+  )
 
   # or, if you have the metadata in a String:
   # idp_metadata = idp_metadata_parser.parse_to_hash(idp_metadata_xml)
-
-  use OmniAuth::Strategies::SAML,
-    idp_metadata.merge(
-      :assertion_consumer_service_url => "consumer_service_url",
-      :issuer                         => "issuer"
-    )
 
   config.omniauth :twitter, Rails.application.secrets.twitter_key, Rails.application.secrets.twitter_secret
   config.omniauth :facebook, Rails.application.secrets.facebook_key, Rails.application.secrets.facebook_secret, scope: "email", info_fields: "email,name,verified"
