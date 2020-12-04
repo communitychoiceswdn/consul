@@ -266,7 +266,7 @@ Devise.setup do |config|
                   idp_cert_fingerprint: Rails.application.secrets.saml_idp_cert_fingerprint,
                   certificate: Rails.application.secrets.saml_certificate,
                   idp_sso_target_url: Rails.application.secrets.saml_idp_sso_target_url,
-                  idp_sso_target_url: Rails.application.secrets.saml_idp_slo_target_url,
+                  idp_slo_target_url: Rails.application.secrets.saml_idp_slo_target_url,
                   private_key: Rails.application.secrets.saml_private_key,
                   request_attributes: [
                     { :name => 'urn:oid:0.9.2342.19200300.100.1.22', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Email Address' },
