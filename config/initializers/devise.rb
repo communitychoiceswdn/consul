@@ -263,6 +263,10 @@ Devise.setup do |config|
                   strategy_class: OmniAuth::Strategies::Wordpress,
                   client_options: { site: Rails.application.secrets.wordpress_oauth2_site }
   config.omniauth :saml,
+                  idp_metadata.merge(
+                    :assertion_consumer_service_url => "consumer_service_url",
+                    :issuer                         => "issuer"
+                  ),
                   idp_cert_fingerprint: Rails.application.secrets.saml_idp_cert_fingerprint,
                   certificate: Rails.application.secrets.saml_certificate,
                   idp_sso_target_url: Rails.application.secrets.saml_idp_sso_target_url,
