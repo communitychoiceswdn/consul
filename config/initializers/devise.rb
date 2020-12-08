@@ -250,6 +250,8 @@ Devise.setup do |config|
     true, # validate cert
     entity_id: Rails.application.secrets.saml_entity_data
   )
+  
+  OneLogin::RubySaml::Logging.logger = Logger.new('/var/log/ruby-saml.log')
 
   # or, if you have the metadata in a String:
   # idp_metadata = idp_metadata_parser.parse_to_hash(idp_metadata_xml)
