@@ -1,34 +1,3 @@
-<% if false %>
-<% if oauth_logins.any? %>
-  <div class="row">
-    <div class="small-12 column">
-      <div class="margin-bottom">
-        <strong><%= t("omniauth.info.#{action}") %></strong>
-      </div>
-    </div>
-
-    <% oauth_logins.each do |login| %>
-      <div class="small-12 medium-6 large-4 column end">
-        <%= link_to t("omniauth.#{login}.name"), send("user_#{login}_omniauth_authorize_path"),
-                    title: t("omniauth.#{login}.#{action}"),
-                    class: "button-#{login.to_s.delete_suffix("_oauth2")} button expanded",
-                    method: :post %>
-      </div>
-    <% end %>
-
-    
-
-    <div class="small-12 column auth-divider">
-      <span><%= t("omniauth.or_fill") %></span>
-    </div>
-  </div>
-<% end %>
-
-<%= link_to(image_tag("/myaccount_register.png",:alt => "register with myaccount"), "https://uat.signinportal.mycas.org.uk/home/?sp=register/CMMCS", :target =>"_blank") %>
-<%= link_to(image_tag("/myaccount_signin.png",:alt => "sign in with myaccount"), user_twitter_omniauth_authorize_path, method: :post %>
-
-<% end %>
-
 <% if feature?(:twitter_login) || feature?(:facebook_login) || feature?(:google_login) || feature?(:wordpress_login) || feature?(:saml_login) %>
 
   <% if current_page?(new_user_session_path) %>
@@ -77,9 +46,9 @@
 
       <% if feature? :saml_login %>
         <div class="small-12 medium-6 large-4 column end">
-          <%= link_to t("omniauth.saml_oauth2.name"), user_saml_oauth2_omniauth_authorize_path,
-                      title: t("omniauth.saml_oauth2.sign_in"),
-                      class: "button-wordpress button expanded",
+          <%= link_to t("omniauth.saml.name"), user_saml_omniauth_authorize_path,
+                      title: t("omniauth.saml.sign_in"),
+                      class: "button-saml button expanded",
                       method: :post %>
         </div>
       <% end %>
@@ -136,8 +105,8 @@
 
       <% if feature? :saml_login %>
         <div class="small-12 medium-6 large-4 column end">
-          <%= link_to t("omniauth.saml_oauth2.name"), user_saml_oauth2_omniauth_authorize_path,
-                      title: t("omniauth.saml_oauth2.sign_up"),
+          <%= link_to t("omniauth.saml.name"), user_saml_omniauth_authorize_path,
+                      title: t("omniauth.saml.sign_up"),
                       class: "button-saml button expanded",
                       method: :post %>
         </div>
