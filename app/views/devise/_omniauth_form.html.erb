@@ -46,9 +46,9 @@
 
       <% if feature? :saml_login %>
         <div class="small-12 medium-6 large-4 column end">
-          <%= link_to t("omniauth.saml.name"), user_saml_omniauth_authorize_path,
+          <%= link_to (image_tag("/myaccount_signin.png",:alt => "sign in with myaccount"), user_saml_omniauth_authorize_path,
                       title: t("omniauth.saml.sign_in"),
-                      class: "button-saml button expanded",
+                      #class: "button-saml button expanded",
                       method: :post %>
         </div>
       <% end %>
@@ -105,9 +105,9 @@
 
       <% if feature? :saml_login %>
         <div class="small-12 medium-6 large-4 column end">
-          <%= link_to t("omniauth.saml.name"), user_saml_omniauth_authorize_path,
+          <%= link_to (image_tag("/myaccount_register.png",:alt => "register with myaccount"), "https://uat.signinportal.mycas.org.uk/home/?sp=register/CMMCS",
                       title: t("omniauth.saml.sign_up"),
-                      class: "button-saml button expanded",
+                      #class: "button-saml button expanded",
                       method: :post %>
         </div>
       <% end %>
