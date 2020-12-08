@@ -268,7 +268,9 @@ Devise.setup do |config|
                   idp_sso_target_url: Rails.application.secrets.saml_idp_sso_target_url,
                   idp_slo_target_url: Rails.application.secrets.saml_idp_slo_target_url,
                   private_key: Rails.application.secrets.saml_private_key,
-                  name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
+                  name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
+                  authn_context: "urn:oasis:names:tc:SAML:2.0:PasswordProtectedTransport",
+                  authn_context_comparison: "exact",
                   request_attributes: [
                     { :name => 'urn:oid:0.9.2342.19200300.100.1.22', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Email Address' },
                     { :name => 'urn:oid:0.9.2342.19200300.100.1.1', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Username' },
