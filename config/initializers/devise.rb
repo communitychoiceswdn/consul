@@ -263,15 +263,12 @@ Devise.setup do |config|
                   strategy_class: OmniAuth::Strategies::Wordpress,
                   client_options: { site: Rails.application.secrets.wordpress_oauth2_site }
   config.omniauth :saml,
-                  idp_metadata.merge(
-                    :assertion_consumer_service_url => "consumer_service_url",
-                    :issuer                         => "issuer"
-                  ),
                   idp_cert_fingerprint: Rails.application.secrets.saml_idp_cert_fingerprint,
                   certificate: Rails.application.secrets.saml_certificate,
                   idp_sso_target_url: Rails.application.secrets.saml_idp_sso_target_url,
                   idp_slo_target_url: Rails.application.secrets.saml_idp_slo_target_url,
                   private_key: Rails.application.secrets.saml_private_key,
+                  name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
                   request_attributes: [
                     { :name => 'urn:oid:0.9.2342.19200300.100.1.22', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Email Address' },
                     { :name => 'urn:oid:0.9.2342.19200300.100.1.1', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Username' },
