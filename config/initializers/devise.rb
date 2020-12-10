@@ -250,8 +250,6 @@ Devise.setup do |config|
     true, # validate cert
     entity_id: Rails.application.secrets.saml_entity_data
   )
-  
-  OneLogin::RubySaml::Logging.logger = Logger.new('/log/ruby-saml.log')
 
   # or, if you have the metadata in a String:
   # idp_metadata = idp_metadata_parser.parse_to_hash(idp_metadata_xml)
@@ -265,12 +263,13 @@ Devise.setup do |config|
                   strategy_class: OmniAuth::Strategies::Wordpress,
                   client_options: { site: Rails.application.secrets.wordpress_oauth2_site }
   config.omniauth :saml,
-                  idp_cert_fingerprint: Rails.application.secrets.saml_idp_cert_fingerprint,
+                  idp_cert_fingerprint: idp_metadata[:idp_cert_fingerprint],
+                  idp_cert: idp_metadata[:idp_cert],
+                  idp_sso_target_url: idp_metadata[:idp_sso_target_url],
+                  idp_slo_target_url: idp_metadata[:idp_slo_target_url],
+                  name_identifier_format: idp_metadata[:name_identifier_format],
                   certificate: Rails.application.secrets.saml_certificate,
-                  idp_sso_target_url: Rails.application.secrets.saml_idp_sso_target_url,
-                  idp_slo_target_url: Rails.application.secrets.saml_idp_slo_target_url,
                   private_key: Rails.application.secrets.saml_private_key,
-                  name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
                   authn_context: "urn:oasis:names:tc:SAML:2.0:PasswordProtectedTransport",
                   authn_context_comparison: "exact",
                   request_attributes: [
