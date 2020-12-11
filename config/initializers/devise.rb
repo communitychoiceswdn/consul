@@ -292,7 +292,6 @@ Devise.setup do |config|
 
   #Add logger to get full response from the callback phase
   OmniAuth.config.logger = Rails.logger if Rails.env.production?
-  OneLogin::RubySaml::Logging.logger = Rails.logger if Rails.env.production?
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
