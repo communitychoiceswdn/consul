@@ -272,17 +272,9 @@ Devise.setup do |config|
                   idp_sso_target_url: "https://uat.signin.mycas.org.uk/idp/profile/SAML2/Redirect/SSO", 
                   certificate: Rails.application.secrets.saml_certificate,
                   private_key: Rails.application.secrets.saml_private_key,
+                  issuer: Rails.application.secrets.saml_issuer,
                   authn_context: "urn:oasis:names:tc:SAML:2.0:PasswordProtectedTransport",
                   authn_context_comparison: "exact",
-                  request_attributes: [
-                    { :name => 'urn:oid:0.9.2342.19200300.100.1.22', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Email Address' },
-                    { :name => 'urn:oid:0.9.2342.19200300.100.1.1', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Username' },
-                    { :name => 'urn:oid:0.9.2342.19200300.100.1.17', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Primary CAG Code' }
-                  ],
-                  issuer: Rails.application.secrets.saml_issuer,
-                  attribute_statements: { email: ['mail','Email Address','urn:oid:0.9.2342.19200300.100.1.22'],
-                                          username: ['Full name','urn:oid:0.9.2342.19200300.100.1.1'], 
-                                          cag: ['Primary CAG Code','urn:oid:0.9.2342.19200300.100.1.17']},
                   security: { authn_requests_signed: false,
                     want_assertions_signed: false,
                     want_assertions_encrypted: true,
