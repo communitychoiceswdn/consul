@@ -274,7 +274,7 @@ Devise.setup do |config|
                   issuer: Rails.application.secrets.saml_issuer,
                   authn_context: "urn:oasis:names:tc:SAML:2.0:PasswordProtectedTransport",
                   authn_context_comparison: "exact",
-                  security: { authn_requests_signed: false,
+                  security: { authn_requests_signed: true,
                     want_assertions_signed: false,
                     want_assertions_encrypted: true,
                     metadata_signed: false,
