@@ -243,6 +243,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
+  OneLogin::RubySaml::Logging.logger = Logger.new('/var/log/ruby-saml.log')
 
   # Load IdP metadata directly from the IdP in dev / prod ENV
   idp_metadata = idp_metadata_parser.parse_remote_to_hash(
@@ -282,6 +283,9 @@ Devise.setup do |config|
                     embed_sign: false,
                     digest_method: XMLSecurity::Document::SHA1,
                     signature_method: XMLSecurity::Document::RSA_SHA1 }
+
+  #Add logger to get full response from the callback phase
+  OmniAuth.config.logger = Rails.logger if Rails.env.production?
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
