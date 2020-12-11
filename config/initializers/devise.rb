@@ -274,11 +274,17 @@ Devise.setup do |config|
                   issuer: Rails.application.secrets.saml_issuer,
                   authn_context: "urn:oasis:names:tc:SAML:2.0:PasswordProtectedTransport",
                   authn_context_comparison: "exact",
-                  security: { want_assertions_encrypted: true }
+                  security: { authn_requests_signed: false,
+                    want_assertions_signed: false,
+                    want_assertions_encrypted: true,
+                    metadata_signed: false,
+                    embed_sign: false,
+                    digest_method: XMLSecurity::Document::SHA1,
+                    signature_method: XMLSecurity::Document::RSA_SHA1 }
                   request_attributes: [
-                    { :name => 'urn:oid:0.9.2342.19200300.100.1.22', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Email Address' },
-                    { :name => 'urn:oid:0.9.2342.19200300.100.1.1', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Username' },
-                    { :name => 'urn:oid:0.9.2342.19200300.100.1.17', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Primary CAG Code' }
+                      { :name => 'urn:oid:0.9.2342.19200300.100.1.22', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Email Address' },
+                      { :name => 'urn:oid:0.9.2342.19200300.100.1.1', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Username' },
+                      { :name => 'urn:oid:0.9.2342.19200300.100.1.17', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Primary CAG Code' }
                   ],
                   attribute_statements: { email: ['mail','Email Address','urn:oid:0.9.2342.19200300.100.1.22'],
                                             username: ['Full name','urn:oid:0.9.2342.19200300.100.1.1'], 
@@ -286,6 +292,7 @@ Devise.setup do |config|
 
   #Add logger to get full response from the callback phase
   OmniAuth.config.logger = Rails.logger if Rails.env.production?
+  OneLogin::RubySaml::Logging.logger = Rails.logger if Rails.env.production?
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
