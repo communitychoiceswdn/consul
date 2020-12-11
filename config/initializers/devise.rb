@@ -243,7 +243,6 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
-  OneLogin::RubySaml::Logging.logger = Logger.new('/var/log/ruby-saml.log')
 
   # Load IdP metadata directly from the IdP in dev / prod ENV
   idp_metadata = idp_metadata_parser.parse_remote_to_hash(
@@ -266,11 +265,10 @@ Devise.setup do |config|
   config.omniauth :saml,
                   idp_cert_fingerprint: idp_metadata[:idp_cert_fingerprint],
                   idp_cert: idp_metadata[:idp_cert],
-                  idp_sso_target_url: idp_metadata[:idp_sso_target_url],
+                  idp_sso_target_url: "https://uat.signin.mycas.org.uk/idp/profile/SAML2/Redirect/SSO", 
                   idp_slo_target_url: idp_metadata[:idp_slo_target_url],
                   name_identifier_format: idp_metadata[:name_identifier_format],
                   assertion_consumer_service_url: "https://test.communitychoices.scot/users/auth/saml/callback",
-                  idp_sso_target_url: "https://uat.signin.mycas.org.uk/idp/profile/SAML2/Redirect/SSO", 
                   certificate: Rails.application.secrets.saml_certificate,
                   private_key: Rails.application.secrets.saml_private_key,
                   issuer: Rails.application.secrets.saml_issuer,
