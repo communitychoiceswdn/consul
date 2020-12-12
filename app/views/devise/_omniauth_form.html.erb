@@ -47,9 +47,10 @@
       <% if feature? :saml_login %>
         <div class="small-12 medium-6 large-4 column end">
           <%= link_to (image_tag("/myaccount_signin.png",:alt => "sign in with myaccount")), user_saml_omniauth_authorize_path,
-                      title: t("omniauth.saml.sign_in"),
+                      title: t("omniauth.saml.sign_in")
                       #class: "button-saml button expanded",
-                      method: :post %>
+                      #method: :post 
+                      %>
         </div>
       <% end %>
 
