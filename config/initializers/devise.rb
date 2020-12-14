@@ -275,10 +275,10 @@ Devise.setup do |config|
                   authn_context: "urn:oasis:names:tc:SAML:2.0:PasswordProtectedTransport",
                   authn_context_comparison: "exact",
                   security: { authn_requests_signed: true,
-                    want_assertions_signed: false,
+                    want_assertions_signed: true,
                     want_assertions_encrypted: true,
-                    metadata_signed: false,
-                    embed_sign: false,
+                    metadata_signed: true,
+                    embed_sign: true,
                     digest_method: XMLSecurity::Document::SHA1,
                     signature_method: XMLSecurity::Document::RSA_SHA1 },
                   request_attributes: [
