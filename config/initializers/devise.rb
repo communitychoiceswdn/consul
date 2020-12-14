@@ -267,7 +267,7 @@ Devise.setup do |config|
                   idp_cert: idp_metadata[:idp_cert],
                   idp_sso_target_url: "https://uat.signin.mycas.org.uk/idp/profile/SAML2/Redirect/SSO", 
                   idp_slo_target_url: idp_metadata[:idp_slo_target_url],
-                  name_identifier_format: idp_metadata[:name_identifier_format],
+                  #name_identifier_format: idp_metadata[:name_identifier_format],
                   assertion_consumer_service_url: "https://test.communitychoices.scot/users/auth/saml/callback",
                   certificate: Rails.application.secrets.saml_certificate,
                   private_key: Rails.application.secrets.saml_private_key,
