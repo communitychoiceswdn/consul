@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
   default_form_builder ConsulFormBuilder
   protect_from_forgery with: :exception
 
+  skip_forgery_protection if: :saml_callback_path?
+
+  def saml_callback_path?
+    request.fullpath == '/.../auth/saml/callback'
+  end
+
   before_action :authenticate_http_basic, if: :http_basic_auth_site?
 
   before_action :ensure_signup_complete
