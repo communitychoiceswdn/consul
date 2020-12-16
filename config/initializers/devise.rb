@@ -263,7 +263,7 @@ Devise.setup do |config|
                   strategy_class: OmniAuth::Strategies::Wordpress,
                   client_options: { site: Rails.application.secrets.wordpress_oauth2_site }
   config.omniauth :saml,
-                  idp_cert_fingerprint: idp_metadata[:idp_cert_fingerprint],
+                  idp_cert_fingerprint:  Rails.application.secrets.saml_idp_cert_fingerprint,
                   idp_cert: idp_metadata[:idp_cert],
                   idp_sso_target_url: "https://uat.signin.mycas.org.uk/idp/profile/SAML2/Redirect/SSO", 
                   idp_slo_target_url: idp_metadata[:idp_slo_target_url],
