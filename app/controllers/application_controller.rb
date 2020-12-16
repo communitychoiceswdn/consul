@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   default_form_builder ConsulFormBuilder
 
-  skip_forgery_protection if :saml_callback_path?
+  skip_forgery_protection, raise: false if :saml_callback_path?
 
   def saml_callback_path?
     request.fullpath == '/.../auth/saml/callback'
