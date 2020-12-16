@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "5.1.7"
+gem "rails", "5.2.4.4"
 
 gem "acts-as-taggable-on", "~> 6.5.0"
 gem "acts_as_votable", "~> 0.12.1"
@@ -19,8 +19,8 @@ gem "dalli", "~> 2.7.10"
 gem "delayed_job_active_record", "~> 4.1.4"
 gem "devise", "~> 4.7.3"
 gem "devise-async", "~> 1.0.0"
-gem "devise_security_extension", git: "https://github.com/phatworx/devise_security_extension.git" #, "~> 0.10"
-gem "font-awesome-sass", "~> 5.13.0"
+gem "devise-security", "~> 0.11.1"
+gem "font-awesome-sass", "~> 5.15.1" # Remember to update vendor/assets/images/fontawesome when updating this gem
 gem "foundation-rails", "~> 6.6.2.0"
 gem "foundation_rails_helper", "~> 3.0.0"
 gem "globalize", "~> 5.3.0"
@@ -44,15 +44,15 @@ gem 'omniauth-saml', "~> 1.10.2"
 gem "paperclip", "~> 6.1.0"
 gem "paranoia", "~> 2.4.2"
 gem "pg", "~> 1.0.0"
-gem "pg_search", "~> 2.3.0"
+gem "pg_search", "~> 2.3.4"
 gem "puma", "~> 4.3.6"
 gem "recipient_interceptor", "~> 0.2.0"
 gem "redcarpet", "~> 3.5.0"
 gem "responders", "~> 3.0.1"
 gem "rinku", "~> 2.0.6", require: "rails_rinku"
-gem "rollbar", "~> 3.0.0"
+gem "rollbar", "~> 3.0.1"
 gem "sassc-rails", "~> 2.1.2"
-gem "savon", "~> 2.12.0"
+gem "savon", "~> 2.12.1"
 gem "sitemap_generator", "~> 6.1.2"
 gem "social-share-button", "~> 1.1"
 gem "sprockets", "~> 3.7.2"
@@ -60,6 +60,7 @@ gem "translator-text", "~> 0.1.0"
 gem "turbolinks", "~> 5.2.1"
 gem "turnout", "~> 2.5.0"
 gem "uglifier", "~> 4.2.0"
+gem "view_component", "~> 2.19.1", require: "view_component/engine"
 gem "whenever", "~> 1.0.0", require: false
 gem "wicked_pdf", "~> 2.1.0"
 gem "wkhtmltopdf-binary", "~> 0.12.4"
@@ -102,10 +103,10 @@ group :development do
   gem "erb_lint", require: false
   gem "github_changelog_generator", "~> 1.15.2"
   gem "mdl", "~> 0.11.0", require: false
-  gem "rubocop", "~> 0.83.0", require: false
+  gem "rubocop", "~> 0.91.0", require: false
   gem "rubocop-performance", "~> 1.7.1", require: false
-  gem "rubocop-rails", "~> 2.3.2", require: false
-  gem "rubocop-rspec", "~> 1.35.0", require: false
+  gem "rubocop-rails", "~> 2.6.0", require: false
+  gem "rubocop-rspec", "~> 1.41.0", require: false
   gem "rvm1-capistrano3", "~> 1.4.0", require: false
   gem "scss_lint", "~> 0.59.0", require: false
   gem "web-console", "~> 3.7.0"

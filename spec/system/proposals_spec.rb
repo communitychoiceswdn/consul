@@ -323,8 +323,8 @@ describe "Proposals" do
     proposal = create(:proposal)
 
     visit proposal_path(proposal)
-    expect(page).to have_css "meta[name='twitter:title'][content=\'#{proposal.title}\']", visible: false
-    expect(page).to have_css "meta[property='og:title'][content=\'#{proposal.title}\']", visible: false
+    expect(page).to have_css "meta[name='twitter:title'][content=\'#{proposal.title}\']", visible: :hidden
+    expect(page).to have_css "meta[property='og:title'][content=\'#{proposal.title}\']", visible: :hidden
   end
 
   scenario "Create and publish" do
@@ -1854,11 +1854,8 @@ describe "Successful proposals" do
     end
   end
 
-  scenario "Successful proposals do not show create question button in index" do
+  scenario "Successful proposals do not show create question button in index", :admin do
     successful_proposals = create_successful_proposals
-    admin = create(:administrator)
-
-    login_as(admin.user)
 
     visit proposals_path
 
@@ -1869,11 +1866,8 @@ describe "Successful proposals" do
     end
   end
 
-  scenario "Successful proposals do not show create question button in show" do
+  scenario "Successful proposals do not show create question button in show", :admin do
     successful_proposals = create_successful_proposals
-    admin = create(:administrator)
-
-    login_as(admin.user)
 
     successful_proposals.each do |proposal|
       visit proposal_path(proposal)

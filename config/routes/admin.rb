@@ -274,8 +274,20 @@ resolve "Budget::Heading" do |heading, options|
   [heading.budget, :group, :heading, options.merge(group_id: heading.group, id: heading)]
 end
 
+resolve "Budget::Phase" do |phase, options|
+  [phase.budget, :phase, options.merge(id: phase)]
+end
+
 resolve "Poll::Booth" do |booth, options|
   [:booth, options.merge(id: booth)]
+end
+
+resolve "Poll::BoothAssignment" do |assignment, options|
+  [assignment.poll, :booth_assignment, options.merge(id: assignment)]
+end
+
+resolve "Poll::Shift" do |shift, options|
+  [:booth, :shift, options.merge(booth_id: shift.booth, id: shift)]
 end
 
 resolve "Poll::Officer" do |officer, options|

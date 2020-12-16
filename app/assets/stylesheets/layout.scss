@@ -42,7 +42,13 @@ body {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   font-size: $base-font-size;
+
+  > .wrapper {
+    flex: 1;
+  }
 }
 
 h1,
@@ -212,19 +218,6 @@ a {
 
 .icon-check {
   color: $check;
-}
-
-.wrapper {
-  min-height: 100%;
-  margin: 0 auto (-$line-height) * 12;
-  height: auto !important;
-  height: 100%;
-}
-
-.footer,
-.push {
-  clear: both;
-  min-height: $line-height * 12;
 }
 
 .ie-callout {
@@ -508,7 +501,8 @@ a {
 // 02. Header
 // ----------
 
-header {
+body > header,
+.wrapper > header {
   background: $brand;
   border-bottom: 1px solid $border;
   margin-bottom: $line-height;
@@ -932,7 +926,9 @@ footer {
 
 .footer {
   background: #f1f1f1;
+  clear: both;
   margin-top: $line-height * 2;
+  min-height: $line-height * 12;
   padding-top: $line-height;
 }
 
@@ -999,8 +995,8 @@ footer {
 
 .auth-page {
 
-  .wrapper {
-    margin: 0 auto (-$line-height) * 14;
+  .footer {
+    margin-top: 0;
   }
 }
 
@@ -1769,6 +1765,10 @@ table {
 
 .social {
 
+  li {
+    display: inline-block;
+  }
+
   a {
     font-size: rem-calc(24);
     margin: 0 $line-height / 2;
@@ -2124,18 +2124,16 @@ table {
 
   .responses-count {
     .show-children {
-      @include has-fa-icon(plus-square, r);
-      display: none;
+      @include has-fa-icon(plus-square, regular);
     }
 
     .collapse-children {
-      @include has-fa-icon(minus-square, r);
+      @include has-fa-icon(minus-square, regular);
     }
 
     .show-children::before,
     .collapse-children::before {
-      margin-right: rem-calc(6);
-      transform: translateY(1px);
+      transform: translateY(-1px);
     }
 
     &.collapsed {
@@ -2143,9 +2141,12 @@ table {
       .collapse-children {
         display: none;
       }
+    }
+
+    &:not(.collapsed) {
 
       .show-children {
-        display: inline;
+        display: none;
       }
     }
   }
@@ -2830,6 +2831,10 @@ table {
   .cards-container {
     display: flex;
     flex-wrap: wrap;
+
+    .card a {
+      height: 100%;
+    }
   }
 
   .card {
@@ -2838,8 +2843,6 @@ table {
     overflow: visible;
 
     a {
-      height: 100%;
-
       img {
         transition-duration: 0.3s;
         transition-property: transform;

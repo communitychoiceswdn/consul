@@ -1,14 +1,11 @@
 require "rails_helper"
 
-describe "Homepage" do
+describe "Homepage", :admin do
   before do
     Setting["homepage.widgets.feeds.proposals"] = false
     Setting["homepage.widgets.feeds.debates"] = false
     Setting["homepage.widgets.feeds.processes"] = false
     Setting["feature.user.recommendations"] = false
-
-    admin = create(:administrator).user
-    login_as(admin)
   end
 
   let!(:proposals_feed)    { create(:widget_feed, kind: "proposals") }
@@ -22,7 +19,7 @@ describe "Homepage" do
     scenario "Admin menu links to homepage path" do
       visit new_admin_widget_card_path(header_card: true)
 
-      click_link Setting["org_name"] + " Administration"
+      click_link "#{Setting["org_name"]} Administration"
 
       expect(page).to have_current_path(admin_root_path)
     end

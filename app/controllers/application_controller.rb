@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   include AccessDeniedHandler
 
   default_form_builder ConsulFormBuilder
-  protect_from_forgery with: :exception
 
   skip_forgery_protection if :saml_callback_path?
 
