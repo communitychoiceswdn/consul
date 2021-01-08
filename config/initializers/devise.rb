@@ -278,7 +278,15 @@ Devise.setup do |config|
                     metadata_signed: false,
                     embed_sign: false,
                     digest_method: XMLSecurity::Document::SHA1,
-                    signature_method: XMLSecurity::Document::RSA_SHA1 }
+                    signature_method: XMLSecurity::Document::RSA_SHA1 },
+                  request_attributes: [
+                      { :name => 'urn:oid:0.9.2342.19200300.100.1.22', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Email Address' },
+                      { :name => 'urn:oid:0.9.2342.19200300.100.1.1', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Username' },
+                      { :name => 'urn:oid:0.9.2342.19200300.100.1.17', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Primary CAG Code' }
+                  ],
+                  attribute_statements: { email: ['mail','Email Address','urn:oid:0.9.2342.19200300.100.1.22'],
+                                            username: ['Full name','urn:oid:0.9.2342.19200300.100.1.1'], 
+                                            cag: ['Primary CAG Code','urn:oid:0.9.2342.19200300.100.1.17']}
 
   #Add logger to get full response from the callback phase
   OmniAuth.config.logger = Rails.logger
