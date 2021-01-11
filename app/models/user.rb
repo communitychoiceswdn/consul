@@ -138,8 +138,6 @@ class User < ApplicationRecord
       terms_of_service: "1",
       confirmed_at: oauth_email_confirmed ? DateTime.current : nil
     )
-    oauth_user.skip_confirmation!
-    oauth_user.save
   end
 
   def name
