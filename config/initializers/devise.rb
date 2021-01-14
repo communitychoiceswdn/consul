@@ -267,7 +267,7 @@ Devise.setup do |config|
                   idp_cert: idp_metadata[:idp_cert],
                   idp_sso_target_url: "https://uat.signin.mycas.org.uk/idp/profile/SAML2/Redirect/SSO", 
                   idp_slo_target_url: "https://uat.signin.mycas.org.uk/idp/profile/SAML2/Redirect/SLO",
-                  name_identifier_format: "urn:oasis:names:tc:SAML:2.0:nameid-format:transient",
+                  name_identifier_format: "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
                   assertion_consumer_service_url: "https://test.communitychoices.scot/users/auth/saml/callback",
                   certificate: Rails.application.secrets.saml_certificate,
                   private_key: Rails.application.secrets.saml_private_key,
@@ -285,7 +285,7 @@ Devise.setup do |config|
                       { :name => 'urn:oid:0.9.2342.19200300.100.1.17', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Primary CAG Code' }
                   ],
                   attribute_statements: { email: ['mail','Email Address','urn:oid:0.9.2342.19200300.100.1.22'],
-                                            username: ['Full name','urn:oid:0.9.2342.19200300.100.1.1'], 
+                                            nickname: ['Full name','urn:oid:0.9.2342.19200300.100.1.1'], 
                                             cag: ['Primary CAG Code','urn:oid:0.9.2342.19200300.100.1.17']}
 
   #Add logger to get full response from the callback phase
