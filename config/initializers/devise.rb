@@ -285,7 +285,7 @@ Devise.setup do |config|
                   ],
                   attribute_statements: { email: ['mail','Email Address','urn:oid:0.9.2342.19200300.100.1.22'],
                                             nickname: ['Username','urn:oid:0.9.2342.19200300.100.1.1'] },
-                  uid_attribute: 'svt'
+                  uid_attribute: 'urn:oid:0.9.2342.19200300.100.1.28'
 
   #Add logger to get full response from the callback phase
   OmniAuth.config.logger = Rails.logger
