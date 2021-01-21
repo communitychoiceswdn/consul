@@ -288,7 +288,7 @@ Devise.setup do |config|
                   uid_attribute: 'urn:oid:0.9.2342.19200300.100.1.28'
 
   #Add logger to get full response from the callback phase
-  OmniAuth.config.logger = Rails.logger
+  OmniAuth.config.logger = Rails.logger.debug
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
