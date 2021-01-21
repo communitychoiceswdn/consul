@@ -128,6 +128,9 @@ class User < ApplicationRecord
   def self.first_or_initialize_for_oauth(auth)
     oauth_email           = auth.info.email
     oauth_email_confirmed = oauth_email.present? && (auth.info.verified || auth.info.verified_email)
+    outh_cag              = auth.extra.raw_info.cag
+    outh_ref              = "230"
+    outh_cag_confirmed    = (saml_cag == saml_ref ? true : false)
     oauth_user            = User.find_by(email: oauth_email) if oauth_email_confirmed
 
     oauth_user || User.new(
@@ -137,6 +140,7 @@ class User < ApplicationRecord
       password: Devise.friendly_token[0, 20],
       terms_of_service: "1",
       confirmed_at: oauth_email_confirmed ? DateTime.current : nil
+      verified_at: oauth_cag_confirmed ? DateTime.current : nil
     )
   end
 
