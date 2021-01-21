@@ -38,6 +38,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       identity = Identity.first_or_create_from_oauth(auth)
       @user = current_user || identity.user || User.first_or_initialize_for_oauth(auth)
 
+      # Add auth response to log
+      Rails.logger.debug "====================================="
+      Rails.logger.debug "AUTH" + auth.inspect
+      Rails.logger.debug "====================================="
+
       if save_user
         identity.update!(user: @user)
         sign_in_and_redirect @user, event: :authentication
