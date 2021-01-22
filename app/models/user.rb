@@ -128,10 +128,11 @@ class User < ApplicationRecord
   def self.first_or_initialize_for_oauth(auth)
     oauth_email           = auth.info.email
     oauth_email_confirmed = oauth_email.present? && (auth.info.verified || auth.info.verified_email)
-    ouath_lacode              = "230"
+  # ouath_lacode              = "230"
   # ouath_lacode              = auth.extra.raw_info.lacode
-    ouath_lacode_ref          = "230"
-    ouath_lacode_confirmed    = (oauth_lacode == oauth_lacode_ref ? true : false)
+  # ouath_lacode_ref          = "230"
+  # ouath_lacode_confirmed    = (oauth_lacode == oauth_lacode_ref ? true : false)
+    ouath_lacode_confirmed    = true
     oauth_user            = User.find_by(email: oauth_email) if oauth_email_confirmed
 
     oauth_user || User.new(
