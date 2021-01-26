@@ -39,6 +39,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user = current_user || identity.user || User.first_or_initialize_for_oauth(auth)
 
       # Add auth response to log
+      Rails.logger.info auth
 
       if save_user
         identity.update!(user: @user)
