@@ -279,10 +279,11 @@ Devise.setup do |config|
                     embed_sign: false,
                     digest_method: XMLSecurity::Document::SHA1,
                     signature_method: XMLSecurity::Document::RSA_SHA1 },
-                  request_attributes: [
+                    request_attributes: [
                       { :name => 'urn:oid:0.9.2342.19200300.100.1.22', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Email Address' },
-                      { :name => 'urn:oid:0.9.2342.19200300.100.1.1', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Username' }
-                  ],
+                      { :name => 'urn:oid:0.9.2342.19200300.100.1.1', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Username' },
+                      { :name => 'urn:oid:0.9.2342.19200300.100.1.17', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Primary CAG Code' }
+                    ],
                   attribute_statements: { email: ['mail','Email Address','urn:oid:0.9.2342.19200300.100.1.22'],
                                             nickname: ['Username','urn:oid:0.9.2342.19200300.100.1.1'],
                                             description: ['Primary CAG Code','urn:oid:0.9.2342.19200300.100.1.17']},
