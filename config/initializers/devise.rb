@@ -284,7 +284,8 @@ Devise.setup do |config|
                       { :name => 'urn:oid:0.9.2342.19200300.100.1.1', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Username' }
                   ],
                   attribute_statements: { email: ['mail','Email Address','urn:oid:0.9.2342.19200300.100.1.22'],
-                                            nickname: ['Username','urn:oid:0.9.2342.19200300.100.1.1'] },
+                                            nickname: ['Username','urn:oid:0.9.2342.19200300.100.1.1'],
+                                            lacode: ['Primary CAG Code','urn:oid:0.9.2342.19200300.100.1.17']},
                   uid_attribute: 'urn:oid:0.9.2342.19200300.100.1.28'
 
   #Add logger to get full response from the callback phase
