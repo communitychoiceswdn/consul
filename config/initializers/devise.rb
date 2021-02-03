@@ -241,6 +241,16 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+
+  # Load IdP metadata directly from the IdP in dev / prod ENV
+  idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
+  idp_metadata = idp_metadata_parser.parse_remote_to_hash(
+    Rails.application.secrets.saml_idp_metadata,
+    true, # validate cert
+    entity_id: Rails.application.secrets.saml_entity_data
+  )
+
+
   config.omniauth :twitter, Rails.application.secrets.twitter_key, Rails.application.secrets.twitter_secret
   config.omniauth :facebook, Rails.application.secrets.facebook_key, Rails.application.secrets.facebook_secret, scope: "email", info_fields: "email,name,verified"
   config.omniauth :google_oauth2, Rails.application.secrets.google_oauth2_key, Rails.application.secrets.google_oauth2_secret
@@ -250,8 +260,31 @@ Devise.setup do |config|
                   strategy_class: OmniAuth::Strategies::Wordpress,
                   client_options: { site: Rails.application.secrets.wordpress_oauth2_site }
   config.omniauth :saml,
-                  idp_cert_fingerprint: Rails.application.secrets.saml_fingerprint,
-                  idp_sso_target_url: Rails.application.secrets.saml_target_url
+                  idp_metadata: Rails.application.secrets.saml_idp_metadata,
+                  issuer: Rails.application.secrets.saml_issuer,
+                  #These are values parsed directly from the IDP metadata and can often be used instead of values in secrets.yml
+                  #idp_cert: idp_metadata[:idp_cert],
+                  #idp_cert_fingerprint: idp_metadata[:idp_cert_fingerprint],
+                  #idp_sso_target_url: idp_metadata[:idp_sso_target_url],
+                  #idp_slo_target_url: idp_metadata[:idp_slo_target_url],
+                  idp_cert: Rails.application.secrets.saml_idp_cert,
+                  idp_cert_fingerprint:  Rails.application.secrets.saml_idp_cert_fingerprint,
+                  idp_sso_target_url: Rails.application.secrets.saml_idp_sso_target_url, 
+                  idp_slo_target_url: Rails.application.secrets.saml_idp_slo_target_url,
+                  name_identifier_format: Rails.application.secrets.saml_name_identifier_format,
+                  #Needed if your IDP uses transient name id format
+                  #uid_attribute: Rails.application.secrets.saml_uid_attribute, 
+                  assertion_consumer_service_url: Rails.application.secrets.saml_assertion_consumer_service_url,
+                  certificate: Rails.application.secrets.saml_certificate,
+                  private_key: Rails.application.secrets.saml_private_key,
+                  security: { authn_requests_signed: false,
+                    want_assertions_signed: false,
+                    want_assertions_encrypted: true,
+                    metadata_signed: false,
+                    embed_sign: false,
+                    digest_method: XMLSecurity::Document::SHA1,
+                    signature_method: XMLSecurity::Document::RSA_SHA1 }
+     
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
