@@ -263,12 +263,12 @@ Devise.setup do |config|
                   strategy_class: OmniAuth::Strategies::Wordpress,
                   client_options: { site: Rails.application.secrets.wordpress_oauth2_site }
   config.omniauth :saml,
-                  idp_cert_fingerprint:  Rails.application.secrets.saml_idp_cert_fingerprint,
+                  idp_cert_fingerprint:  idp_metadata[:idp_cert_fingerprint],
                   idp_cert: idp_metadata[:idp_cert],
-                  idp_sso_target_url: "https://uat.signin.mycas.org.uk/idp/profile/SAML2/Redirect/SSO", 
-                  idp_slo_target_url: "https://uat.signin.mycas.org.uk/idp/profile/SAML2/Redirect/SLO",
+                  idp_sso_target_url: Rails.application.secrets.saml_idp_sso_target_url, 
+                  idp_slo_target_url: Rails.application.secrets.saml_idp_slo_target_url,
                   name_identifier_format: "urn:oasis:names:tc:SAML:2.0:nameid-format:transient",
-                  assertion_consumer_service_url: "https://test.communitychoices.scot/users/auth/saml/callback",
+                  assertion_consumer_service_url: Rails.application.secrets.saml_assertion_consumer_service_url,
                   certificate: Rails.application.secrets.saml_certificate,
                   private_key: Rails.application.secrets.saml_private_key,
                   issuer: Rails.application.secrets.saml_issuer,
@@ -279,14 +279,6 @@ Devise.setup do |config|
                     embed_sign: false,
                     digest_method: XMLSecurity::Document::SHA1,
                     signature_method: XMLSecurity::Document::RSA_SHA1 },
-                    request_attributes: [
-                      { :name => 'urn:oid:0.9.2342.19200300.100.1.22', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Email Address' },
-                      { :name => 'urn:oid:0.9.2342.19200300.100.1.1', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Username' },
-                      { :name => 'urn:oid:0.9.2342.19200300.100.1.17', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri', :friendly_name => 'Primary CAG Code' }
-                    ],
-                  attribute_statements: { email: ['mail','Email Address','urn:oid:0.9.2342.19200300.100.1.22'],
-                                            nickname: ['Username','urn:oid:0.9.2342.19200300.100.1.1'],
-                                            description: ['Primary CAG Code','urn:oid:0.9.2342.19200300.100.1.17']},
                   uid_attribute: 'urn:oid:0.9.2342.19200300.100.1.28'
 
   #Add logger to get full response from the callback phase
