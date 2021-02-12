@@ -293,9 +293,9 @@ en:
       sign_up: Sign up with Wordpress
       name: Wordpress
     saml:
-      sign_in: Sign in with Saml
-      sign_up: Sign up with Saml
-      name: Saml
+      sign_in: Sign in with myaccount
+      sign_up: Sign up with myaccount
+      name: myaccount
     twitter:
       sign_in: Sign in with Twitter
       sign_up: Sign up with Twitter
