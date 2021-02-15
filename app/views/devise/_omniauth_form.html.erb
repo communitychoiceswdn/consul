@@ -105,7 +105,7 @@
 
       <% if feature? :saml_login %>
         <div class="small-12 medium-6 large-4 column end">
-          <%= link_to (image_tag("/myaccount_register.png",:alt => "register with myaccount")), "https://signin.mygovscot.org/home/?sp=register/CAS",
+          <%= link_to (image_tag("/myaccount_register.png",:alt => "register with myaccount")), Rails.application.secrets.saml_registration_link,
                       title: t("omniauth.saml.sign_up") %>
         </div>
       <% end %>
