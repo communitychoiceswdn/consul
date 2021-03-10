@@ -231,7 +231,7 @@ en:
       administration_menu: Menu
       administration: Administration
       available_locales: Available languages
-      collaborative_legislation: Collaborative legislation
+      collaborative_legislation: Transforming your Council
       debates: Debates
       locale: "Language:"
       management: Management
@@ -244,7 +244,7 @@ en:
       open_gov: Open government
       proposals: Proposals
       poll_questions: Voting
-      budgets: Participatory budgeting
+      budgets: Community Choices
       notification_item:
         new_notifications:
           one: You have a new notification
