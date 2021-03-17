@@ -145,7 +145,7 @@ class User < ApplicationRecord
       terms_of_service: "1",
       confirmed_at: oauth_email_confirmed ? DateTime.current : nil,
       verified_at: oauth_lacode_confirmed ? DateTime.current : nil,
-      residence_verified_at: oauth_lacode_confirmed ? DateTime.current : nil,
+      residence_verified_at: oauth_lacode_confirmed ? DateTime.current : nil
     )
   end
 
