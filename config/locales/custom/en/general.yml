@@ -19,7 +19,7 @@ en:
       user_permission_proposal: Create new proposals
       user_permission_support_proposal: Support proposals
       user_permission_title: Participation
-      user_permission_verify: We cannot verify you to a West Lothian address using myaccount.
+      user_permission_verify: To perform all the actions verify your account to a West Lothian address using myaccount.
       user_permission_verify_info: "* Only for users living within the council area."
       user_permission_votes: Participate on final voting
       username_label: Username
