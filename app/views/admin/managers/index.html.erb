@@ -4,12 +4,12 @@
 
 <div id="managers">
   <% if @managers.any? %>
-    <h3 class="margin"><%= page_entries_info @managers %></h3>
+    <h3><%= page_entries_info @managers %></h3>
 
     <table>
       <thead>
-        <th scope="col"><%= t("admin.managers.index.name") %></th>
-        <th scope="col"><%= t("admin.managers.index.email") %></th>
+        <th scope="col"><%= Manager.human_attribute_name(:name) %></th>
+        <th scope="col"><%= Manager.human_attribute_name(:email) %></th>
         <th scope="col" class="small-3"><%= t("admin.shared.actions") %></th>
       </thead>
       <tbody>

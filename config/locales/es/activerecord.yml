@@ -4,6 +4,10 @@ es:
     results_enabled: "Mostrar resultados"
     stats_enabled: "Mostrar estadísticas"
     advanced_stats_enabled: "Mostrar estadísticas avanzadas"
+    name: Nombre
+    email: Email
+    description: Descripción
+    related_sdg_list: Objetivos y Metas
   activerecord:
     models:
       activity:
@@ -78,6 +82,9 @@ es:
       sdg/local_target:
         one: "meta localizada"
         other: "metas localizadas"
+      sdg/manager:
+        one: "gestor ODS"
+        other: "gestores ODS"
       sdg/target:
         one: "meta"
         other: "metas"
@@ -139,8 +146,6 @@ es:
         one: Registro del censo local
         other: Registros del censo local
     attributes:
-      administrator:
-        description: Descripción
       budget:
         name: "Nombre"
         description_accepting: "Descripción durante la fase de presentación de proyectos"
@@ -225,6 +230,7 @@ es:
         ends_at: "Fecha de fin"
         starts_at: "Fecha de inicio"
       budget/phase/translation:
+        name: "Nombre"
         description: "Descripción"
         summary: "Resumen"
       comment:
@@ -283,6 +289,7 @@ es:
         responsible_name: "Persona responsable del colectivo"
       poll:
         name: "Nombre"
+        title: "Nombre"
         starts_at: "Fecha de apertura"
         ends_at: "Fecha de cierre"
         geozone_restricted: "Restringida por zonas"
@@ -325,6 +332,10 @@ es:
       sdg/local_target/translation:
         title: "Título"
         description: "Descripción"
+      sdg/phase/kind:
+        sensitization: "Sensibilización"
+        planning: "Planificación"
+        monitoring: "Seguimiento"
       sdg/target:
         code: "Código"
         title: "Título"

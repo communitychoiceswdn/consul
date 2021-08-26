@@ -1,4 +1,4 @@
-(1..17).each do |code|
+(1..17).to_a.shuffle.each do |code|
   SDG::Goal.where(code: code).first_or_create!
 end
 
@@ -23,3 +23,5 @@ end
 ].each do |code|
   SDG::Target.where(code: code, goal: SDG::Goal.find_by!(code: code.split(".").first)).first_or_create!
 end
+
+SDG::Phase.kinds.values.each { |kind| SDG::Phase.where(kind: kind).first_or_create! }

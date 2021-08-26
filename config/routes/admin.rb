@@ -53,6 +53,7 @@ namespace :admin do
 
   resources :budgets do
     member do
+      patch :publish
       put :calculate_winners
     end
 
@@ -111,6 +112,10 @@ namespace :admin do
 
   resources :managers, only: [:index, :create, :destroy] do
     get :search, on: :collection
+  end
+
+  namespace :sdg do
+    resources :managers, only: [:index, :create, :destroy]
   end
 
   resources :administrators, only: [:index, :create, :destroy, :edit, :update] do
@@ -200,6 +205,7 @@ namespace :admin do
     get :proposal_notifications, on: :collection
     get :direct_messages, on: :collection
     get :polls, on: :collection
+    get :sdg, on: :collection
   end
 
   namespace :legislation do
@@ -223,7 +229,7 @@ namespace :admin do
 
   namespace :site_customization do
     resources :pages, except: [:show] do
-      resources :cards, only: [:index]
+      resources :cards, except: [:show], as: :widget_cards
     end
     resources :images, only: [:index, :update, :destroy]
     resources :content_blocks, except: [:show]
@@ -264,6 +270,10 @@ end
 
 resolve "Audit" do |audit|
   [*resource_hierarchy_for(audit.associated || audit.auditable), audit]
+end
+
+resolve "Widget::Card" do |card, options|
+  [*resource_hierarchy_for(card.cardable), card]
 end
 
 resolve "Budget::Group" do |group, options|

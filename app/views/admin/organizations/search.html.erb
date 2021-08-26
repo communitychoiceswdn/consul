@@ -1,10 +1,10 @@
 <h2><%= t("admin.organizations.search.title") %></h2>
 
-<%= render Admin::SearchComponent.new(label: t("admin.organizations.index.search_placeholder")) %>
+<%= render Admin::SearchComponent.new(label: t("admin.shared.search.label.organizations")) %>
 
 <div id="search-results">
   <% if @organizations.any? %>
-    <h3 class="margin"><%= page_entries_info @organizations %></h3>
+    <h3><%= page_entries_info @organizations %></h3>
 
     <table>
       <thead>
