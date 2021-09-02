@@ -19,7 +19,7 @@ en:
       user_permission_proposal: Create new proposals
       user_permission_support_proposal: Support proposals
       user_permission_title: Participation
-      user_permission_verify: We cannot verify you to a West Lothian address using myaccount.
+      user_permission_verify: To perform all the actions verify your account to a West Lothian address using myaccount.
       user_permission_verify_info: "* Only for users living within the council area."
       user_permission_votes: Participate on final voting
       username_label: Username
@@ -231,7 +231,7 @@ en:
       administration_menu: Menu
       administration: Administration
       available_locales: Available languages
-      collaborative_legislation: Collaborative legislation
+      collaborative_legislation: Transforming your Council
       debates: Debates
       locale: "Language:"
       management: Management
@@ -244,7 +244,7 @@ en:
       open_gov: Open government
       proposals: Proposals
       poll_questions: Voting
-      budgets: Participatory budgeting
+      budgets: Community Choices
       notification_item:
         new_notifications:
           one: You have a new notification
